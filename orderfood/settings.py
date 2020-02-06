@@ -26,12 +26,20 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool,default=False)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS ',cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS ',default='localhost')
 
 
 # Application definition
 
-INSTALLED_APPS =config('INSTALLED_APPS')
+INSTALLED_APPS =[
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'foodapp.apps.FoodappConfig',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
